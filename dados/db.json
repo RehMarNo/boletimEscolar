@@ -1,0 +1,24 @@
+{
+  "Alunos": [
+    {
+      "id": 1,
+      "nome": "Renata",
+      "idade": "25",
+      "genero": "FEMININO",
+      "dataNasc": "20/11/1996",
+      "fone": "33333333",
+      "serie": "3",
+      "turma": "A"
+    },
+    {
+      "id": 2,
+      "nome": "Jose",
+      "idade": "20",
+      "genero": "MASCULINO",
+      "dataNasc": "31/09/2002",
+      "fone": "444444444",
+      "serie": "1",
+      "turma": "B"
+    }
+  ]
+}

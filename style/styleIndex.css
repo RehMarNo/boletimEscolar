@@ -1,0 +1,14 @@
+.botao{
+    width: 85px;
+    margin-left: 10px;
+    background-color:chartreuse;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.botao a {
+    margin: 5px;
+    text-decoration: none;
+    color: black;
+}
