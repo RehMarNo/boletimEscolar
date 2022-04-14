@@ -39,39 +39,96 @@
                         <h3 class="text-center mb-3">Cadastro</h3>
                     </div>
 
+                    <div class="inline">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" onclick="toggleTipoPessoa()" value="ALUNO"
+                                id="alunoCheck" name="radio">
+                            <label class="form-check-label" for="alunoCheck"> Aluno </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" onclick="toggleTipoPessoa()" value="PROFESSOR"
+                                id="profCheck" name="radio">
+                            <label class="form-check-label" for="profCheck"> Professor </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" onclick="toggleTipoPessoa()" type="radio"
+                                value="RESPONSAVEL" name="radio" id="respCheck">
+                            <label class="form-check-label" for="respCheck"> Responsável </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" onclick="toggleTipoPessoa()" type="radio"
+                                value="FUNCIONARIO" name="radio" id="funcCheck">
+                            <label class="form-check-label" for="funcCheck"> Funcionário </label>
+                        </div>
+                    </div>
+
                     <form>
+                        <hr>
+                        <h5>Dados Pessoais</h5>
+                        <hr>
                         <div class="form-group">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" id="nome" class="form-control entrada">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" class="form-control" id="nome" placeholder="ex. João da Silva" required>
                         </div>
                         <div class="form-group">
-                            <label for="idade">Idade</label>
-                            <input type="number" id="idade" class="form-control entrada">
+                            <label for="cpf">CPF(apenas números)</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="11111111111">
+                        </div>
+                        <div class="form-group">
+                            <label for="rg">RG(apenas números)</label>
+                            <input type="text" class="form-control" id="rg" placeholder="2222222222">
+                        </div>
+                        <div class="form-group">
+                            <label for="dataNasc">Data de nascimento</label>
+                            <input type="date" class="form-control" id="dataNasc" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="naturalCid">Naturalidade</label>
+                            <input type="text" class="form-control" id="naturalCid" placeholder="ex. São Paulo">
+                        </div>
+                        <div class="form-group">
+                            <label for="naturalEst">Estado</label>
+                            <input type="text" class="form-control" id="naturalEst" placeholder="UF">
                         </div>
 
+                        <h5>Endereço</h5>
+                        <hr>
                         <div class="form-group">
-                            <label for="genero" class="form-label">Gênero</label>
-                            <input type="text" id="genero" class="form-control entrada">
+                            <label for="rua">Rua</label>
+                            <input type="text" class="form-control" id="rua" placeholder="ex. Sete de Setembro">
+                        </div>
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input type="number" class="form-control" id="numero" placeholder="ex. 1155">
+                        </div>
+                        <div class="form-group">
+                            <label for="cep">CEP (apenas números)</label>
+                            <input type="text" class="form-control" id="cep" placeholder="ex. 89080999">
+                        </div>
+                        <div class="form-group">
+                            <label for="cidadeRes">Cidade</label>
+                            <input type="text" class="form-control" id="cidadeRes" placeholder="ex. São Paulo">
+                        </div>
+                        <div class="form-group">
+                            <label for="estadoRes">Estado</label>
+                            <input type="text" class="form-control" id="estadoRes" placeholder="UF">
                         </div>
 
+                        <h5>Contatos</h5>
+                        <hr>
                         <div class="form-group">
-                            <label for="dataNasc" class="form-label">Data de Nascimento</label>
-                            <input type="text" id="dataNasc" class="form-control entrada">
+                            <label for="telefone">Telefone(apenas números)</label>
+                            <input type="text" class="form-control" id="telefone" placeholder="47999998888">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Endereço de email</label>
+                            <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
                         </div>
 
-                        <div class="form-group">
-                            <label for="fone" class="form-label">Fone</label>
-                            <input type="text" id="fone" class="form-control entrada">
+                        <div id="divAdicionais">
+
                         </div>
 
-                        <div class="form-group">
-                            <label for="serie" class="form-label">Série</label>
-                            <input type="text" id="serie" class="form-control entrada">
-                        </div>
-                        <div class="form-group">
-                            <label for="turma" class="form-label">Turma</label>
-                            <input type="text" id="turma" class="form-control entrada">
-                        </div>
                     </form>
 
                     <div class="mt-3">
@@ -107,6 +164,127 @@
                 entrada[i].value = ""
             }
         }
+
+        function toggleTipoPessoa() {
+            let pessoa = document.getElementsByName('radio');
+            let tipoPessoa = ''
+            for (var i in pessoa) {
+                if (pessoa[i].checked == true) {
+                    tipoPessoa = pessoa[i].value;
+                }
+            }
+
+            if (tipoPessoa == 'PROFESSOR') {
+                document.getElementById('divAdicionais').innerHTML = `
+                            <h5>Adicionais</h5>
+                            <hr>
+                            <div class="form-group">
+                                <label for="formacao">Formação</label>
+                                <input type="text" class="form-control" id="formacao" placeholder="Ex. Licenciatura em Matemática">
+                            </div>
+                            <div class="form-group">
+                                <label for="materia">Matéria ministrada</label>
+                                <input type="email" class="form-control" id="materia" placeholder="Matemática">
+                            </div>`
+
+            } else if (tipoPessoa == 'ALUNO') {
+
+                document.getElementById('divAdicionais').innerHTML = `
+                            <h5>Adicionais</h5>
+                            <hr>
+                            <div class="form-group">
+                                <label for="nomePai">Nome do Pai</label>
+                                <input type="text" class="form-control" id="nomePai" placeholder="Ex. Jose da Silva">
+                            </div>
+                            <div class="form-group">
+                                <label for="nomeMae">Nome da Mãe</label>
+                                <input type="text" class="form-control" id="nomeMae" placeholder="Ex. Maria da Silva">
+                            </div>
+                            <div class="form-group">
+                                <label for="selectSerie">Série</label>
+                                <select name="" id="selectSerie" class="form-control">
+                                    <option value="MEDIO 1"> 1° Ano Medio</option>
+                                    <option value="MEDIO 2"> 2° Ano Medio</option>
+                                    <option value="MEDIO 3"> 3° Ano Medio</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectTurma">Turma</label>
+                                <select name="" id="selectTurma" class="form-control">
+                                    <option value="">Não se aplica</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectTurno">Turno</label>
+                                <select name="" id="selectTurno" class="form-control">
+                                    <option value="">Não se aplica</option>
+                                    <option value="INTEGRAL">Integral</option>
+                                    <option value="MANHA">Manhã</option>
+                                    <option value="TARDE">Tarde</option>
+                                </select>
+                            </div>`
+
+            } else if (tipoPessoa == 'RESPONSAVEL') {
+                document.getElementById('divAdicionais').innerHTML = `
+                            <h5>Adicionais</h5>
+                            <hr>
+                            <div class="form-group">
+                                <label for="nomeAluno">Nome do(a) Aluno(a)</label>
+                                <input type="text" class="form-control" id="nomeAluno" placeholder="Ex. Jose da Silva">
+                            </div>
+                            <div class="form-group">
+                                <label for="selectSerie">Série</label>
+                                <select name="" id="selectSerie" class="form-control">
+                                    <option value="MEDIO 1"> 1° Ano Medio</option>
+                                    <option value="MEDIO 2"> 2° Ano Medio</option>
+                                    <option value="MEDIO 3"> 3° Ano Medio</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectTurma">Turma</label>
+                                <select name="" id="selectTurma" class="form-control">
+                                    <option value="">Não se aplica</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectTurno">Turno</label>
+                                <select name="" id="selectTurno" class="form-control">
+                                    <option value="">Não se aplica</option>
+                                    <option value="INTEGRAL">Integral</option>
+                                    <option value="MANHA">Manhã</option>
+                                    <option value="TARDE">Tarde</option>
+                                </select>
+                            </div>`
+            } else if (tipoPessoa == 'FUNCIONARIO') {
+                document.getElementById('divAdicionais').innerHTML = `
+                            <h5>Adicionais</h5>
+                            <hr>
+                            <div class="form-group">
+                                <label for="setor">Setor</label>
+                                <select name="" id="selectTurma" class="form-control">
+                                    <option value="ADMINISTRATIVO"> Administrativo </option>
+                                    <option value="COORDENACAO"> Coordenação </option>
+                                    <option value="DIRETORIA"> Diretoria </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="setor">Cargo</label>
+                                <select name="" id="selectTurma" class="form-control">
+                                    <option value="SECRETARIA"> Secretária </option>
+                                    <option value="COORDENACAO"> Coordenação </option>
+                                    <option value="DIRETORIA"> Diretoria </option>
+                                </select>
+                            </div>`
+            }
+        }
+
+
     </script>
 
 </body>
